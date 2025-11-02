@@ -2,6 +2,7 @@ import HeroHUD from './components/HeroHUD';
 import FeatureGrid from './components/FeatureGrid';
 import FlowTabs from './components/FlowTabs';
 import EscrowShowcase from './components/EscrowShowcase';
+import ThemeToggle from './components/ThemeToggle';
 
 function App() {
   return (
@@ -15,9 +16,10 @@ function App() {
           </a>
           <nav aria-label="Primary">
             <div className="flex items-center gap-2">
-              <button className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/90 hover:bg-white/10" aria-label="Sign in">
-                Sign in
-              </button>
+              <a href="/test" className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/90 hover:bg-white/10" aria-label="Backend & DB test">
+                Health
+              </a>
+              <ThemeToggle />
               <button className="rounded-lg bg-amber-500 px-3 py-1.5 text-xs font-semibold text-slate-900 hover:bg-amber-400" aria-label="Get started">
                 Get started
               </button>

@@ -1,13 +1,20 @@
 import { motion } from 'framer-motion';
 import { Hammer, Shield, CreditCard, Bot } from 'lucide-react';
+import Spline from '@splinetool/react-spline';
 
 export default function HeroHUD() {
   return (
     <section className="relative min-h-[90vh] w-full overflow-hidden" aria-label="Brixel hero">
-      {/* Cinematic light + HUD grid */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.08),transparent_50%),linear-gradient(120deg,rgba(245,158,11,0.08),transparent_40%),linear-gradient(0deg,rgba(255,255,255,0.04),transparent_60%)] pointer-events-none" />
+      {/* Spline background layer */}
+      <div className="absolute inset-0">
+        <Spline scene="https://prod.spline.design/vc19ejtcC5VJjy5v/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+      </div>
+
+      {/* Cinematic light + HUD grid overlays (do not block interaction) */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.2),transparent_50%),linear-gradient(120deg,rgba(245,158,11,0.08),transparent_40%),linear-gradient(0deg,rgba(255,255,255,0.04),transparent_60%)]" />
       <div className="pointer-events-none absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:32px_32px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
 
+      {/* Foreground content */}
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center px-4 pt-20 sm:pt-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -33,7 +40,7 @@ export default function HeroHUD() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="mt-4 max-w-2xl text-center text-base text-slate-700 dark:text-slate-300"
+          className="mt-4 max-w-2xl text-center text-base text-slate-100/90 dark:text-slate-300"
         >
           A mobile-first marketplace where customers, companies, and skilled crews meet. Verify licenses, auto-form teams, track progress, and release milestone payments — all in one cinematic HUD.
         </motion.p>
@@ -84,6 +91,7 @@ export default function HeroHUD() {
         </div>
       </div>
 
+      {/* Glow at bottom */}
       <div className="pointer-events-none absolute inset-x-0 bottom-[-10%] h-[40%] bg-gradient-to-t from-amber-500/20 via-transparent to-transparent blur-[60px]" aria-hidden />
     </section>
   );
