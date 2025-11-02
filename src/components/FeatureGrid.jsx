@@ -46,7 +46,7 @@ const items = [
 
 export default function FeatureGrid() {
   return (
-    <section className="relative w-full px-4 py-12 sm:py-16">
+    <section className="relative w-full px-4 py-12 sm:py-16" aria-label="Core systems">
       <div className="mx-auto max-w-6xl">
         <div className="mb-6 flex items-end justify-between">
           <h2 className="font-manrope text-2xl font-bold text-slate-900 dark:text-white sm:text-3xl">Core systems</h2>
@@ -61,11 +61,13 @@ export default function FeatureGrid() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: i * 0.04 }}
               className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-md"
+              role="article"
+              aria-label={Item.title}
             >
-              <div className="absolute right-[-20%] top-[-20%] h-40 w-40 rounded-full bg-amber-500/10 blur-2xl transition group-hover:scale-125" />
+              <div className="absolute right-[-20%] top-[-20%] h-40 w-40 rounded-full bg-amber-500/10 blur-2xl transition group-hover:scale-125" aria-hidden />
               <div className="relative z-10 flex items-start gap-3">
                 <div className="rounded-xl border border-white/10 bg-white/10 p-2 text-amber-400">
-                  <Item.icon className="h-5 w-5" />
+                  <Item.icon className="h-5 w-5" aria-hidden />
                 </div>
                 <div>
                   <h3 className="font-semibold text-slate-900 dark:text-white">{Item.title}</h3>
