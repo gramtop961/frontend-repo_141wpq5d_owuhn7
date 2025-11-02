@@ -1,28 +1,44 @@
-import { useState } from 'react'
+import HeroHUD from './components/HeroHUD';
+import FeatureGrid from './components/FeatureGrid';
+import FlowTabs from './components/FlowTabs';
+import EscrowShowcase from './components/EscrowShowcase';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
+    <div className="min-h-screen w-full bg-[linear-gradient(180deg,#0b0f14, #0f141a_30%,#0b0f14_100%)] text-white">
+      {/* Top nav (minimal, mobile-first) */}
+      <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#0b0f14]/70 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+          <div className="flex items-center gap-2">
+            <div className="h-6 w-6 rounded-sm bg-gradient-to-br from-amber-400 to-amber-600 shadow-[0_0_30px_rgba(245,158,11,0.5)]" />
+            <span className="font-manrope text-lg font-extrabold tracking-tight">Brixel</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <button className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/90 hover:bg-white/10">Sign in</button>
+            <button className="rounded-lg bg-amber-500 px-3 py-1.5 text-xs font-semibold text-slate-900 hover:bg-amber-400">Get started</button>
+          </div>
         </div>
-      </div>
+      </header>
+
+      <main>
+        <HeroHUD />
+        <FeatureGrid />
+        <FlowTabs />
+        <EscrowShowcase />
+      </main>
+
+      <footer className="border-t border-white/10 px-4 py-8">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
+          <p className="text-xs text-white/60">© {new Date().getFullYear()} Brixel. Building trust in construction.</p>
+          <div className="flex items-center gap-3">
+            <a className="text-xs text-white/70 hover:text-white" href="#">Privacy</a>
+            <a className="text-xs text-white/70 hover:text-white" href="#">Terms</a>
+            <a className="text-xs text-white/70 hover:text-white" href="#">Contact</a>
+          </div>
+        </div>
+      </footer>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
