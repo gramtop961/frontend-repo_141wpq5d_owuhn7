@@ -1,9 +1,19 @@
+import { useEffect } from 'react';
 import HeroHUD from './components/HeroHUD';
 import FeatureGrid from './components/FeatureGrid';
 import FlowTabs from './components/FlowTabs';
 import EscrowShowcase from './components/EscrowShowcase';
+import ConstructionAnimations from './components/ConstructionAnimations';
+import RequestJobForm from './components/RequestJobForm';
+import KYCVerification from './components/KYCVerification';
 
 function App() {
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+    }
+  }, []);
+
   return (
     <div className="min-h-screen w-full bg-[linear-gradient(180deg,#0b0f14,#0f141a_30%,#0b0f14_100%)] text-white">
       {/* Header */}
@@ -17,7 +27,8 @@ function App() {
             <div className="flex items-center gap-2">
               <a href="#systems" className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/90 hover:bg-white/10">Systems</a>
               <a href="#flows" className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/90 hover:bg-white/10">Flows</a>
-              <a href="#escrow" className="rounded-lg bg-orange-500 px-3 py-1.5 text-xs font-semibold text-black hover:bg-orange-400">Escrow</a>
+              <a href="#escrow" className="rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/90 hover:bg-white/10">Escrow</a>
+              <a href="#request" className="rounded-lg bg-orange-500 px-3 py-1.5 text-xs font-semibold text-black hover:bg-orange-400">Request a job</a>
             </div>
           </nav>
         </div>
@@ -39,6 +50,16 @@ function App() {
 
         <section id="escrow">
           <EscrowShowcase />
+        </section>
+
+        <ConstructionAnimations />
+
+        <section id="request">
+          <RequestJobForm />
+        </section>
+
+        <section id="kyc">
+          <KYCVerification />
         </section>
       </main>
     </div>
